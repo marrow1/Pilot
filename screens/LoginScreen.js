@@ -4,7 +4,8 @@ import { StyleSheet, Text, View} from 'react-native';
 import colors from '../utility/colors';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
-import { Button } from 'react-native-paper';
+import { TouchableRipple } from 'react-native-paper';
+
 
 function LoginScreen({ navigation }) {
 
@@ -17,9 +18,16 @@ function LoginScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <Button mode="contained" style={styles.continueButton} onPress={() => navigation.navigate('Create account')}>
-          <Text style={styles.buttonText}>Register with email</Text>
-          </Button>
+        <TouchableRipple rippleColor="rgba(178, 186, 187, .32)" style={styles.continueButtonGoogle} onPress={() => console.log('Google Button')}>
+          <Text style={styles.googlebuttonText} uppercase={false}>Sign in with Google</Text>
+        </TouchableRipple>
+        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.continueButtonFB} onPress={() => console.log('Facebook Button')}>
+          <Text style={styles.buttonText}>Continue with Facebook</Text>
+        </TouchableRipple>
+        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.continueButton} onPress={() => navigation.navigate('Create account')}>
+          <Text style={styles.buttonText}>Sign up with Email</Text>
+        </TouchableRipple>
+
       </View>
     );
   }
@@ -32,31 +40,52 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       backgroundColor: colors.white,
     },
-    mainLogo: {
-      fontFamily: "Ubuntu_500Medium",
-      fontSize: 50,
-      color:colors.black,
-      alignItems: "center",
-      color: colors.white,
-    },
     buttonContainer: {
       flexDirection: 'column',
       justifyContent: 'space-between',
       position: 'absolute',
       bottom: 30,
-      width: "90%",
+      width: "100%",
     },
     continueButton: {
-      color: colors.black,
+      alignItems: "center",
       borderRadius: 5,
-      padding: 8,
-      backgroundColor:colors.white
+      backgroundColor:colors.black,
+      padding:10,
+      width: "90%",
+      marginBottom: 15,
+      padding: 20,
     },
     buttonText: {
+      color: colors.white,
+      fontFamily: "Ubuntu_400Regular",
+      fontWeight: "normal",
+      fontStyle:"normal",
+    },
+    googlebuttonText: {
       color: colors.black,
       fontFamily: "Ubuntu_400Regular",
-      fontWeight: "bold"
-    }
+      fontWeight: "normal",
+      fontStyle:"normal",
+    },
+    continueButtonGoogle: {
+      alignItems: "center",
+      borderRadius: 5,
+      backgroundColor:colors.gray,
+      padding:10,
+      width: "90%",
+      marginBottom: 15,
+      padding: 20,
+    },
+    continueButtonFB: {
+      alignItems: "center",
+      borderRadius: 5,
+      backgroundColor:colors.facebook,
+      padding:10,
+      width: "90%",
+      marginBottom: 15,
+      padding: 20,
+    },
   });
 
 export default LoginScreen;

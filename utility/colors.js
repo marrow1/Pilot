@@ -3,4 +3,6 @@ export default {
     black: "#000000",
     white: "#fff",
     new: "#CEBAA3",
+    facebook: "#4267B2",
+    gray: "#F2F4F4",
 }
