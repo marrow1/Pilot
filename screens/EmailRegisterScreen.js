@@ -4,9 +4,9 @@ import { StyleSheet, Text, View} from 'react-native';
 import colors from '../utility/colors';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
-import { Button } from 'react-native-paper';
 
-function LoginScreen({ navigation }) {
+
+function EmailRegisterScreen() {
 
   let [fontsLoaded] = useFonts({ Ubuntu_400Regular, Ubuntu_500Medium });
 
@@ -17,9 +17,7 @@ function LoginScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <Button mode="contained" style={styles.continueButton} onPress={() => navigation.navigate('Create account')}>
-          <Text style={styles.buttonText}>Register with email</Text>
-          </Button>
+       <Text>Email Register Screen</Text>
       </View>
     );
   }
@@ -59,4 +57,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default LoginScreen;
+export default EmailRegisterScreen;

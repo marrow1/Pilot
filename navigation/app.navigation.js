@@ -4,15 +4,18 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import 'react-native-gesture-handler';
 import WelcomeScreen from "../screens/WelcomeScreen";
 import LoginScreen from "../screens/LoginScreen";
+import EmailRegisterScreen from '../screens/EmailRegisterScreen';
 
 const Stack = createStackNavigator();
 
 function AppNavigator() {
+
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Stack.Navigator screenOptions={{ gestureEnabled: false, cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,}}>
         <Stack.Screen options={{headerShown: false}} name="Welcome" component={WelcomeScreen} />
         <Stack.Screen  name="Login to continue" component={LoginScreen} />
+        <Stack.Screen  name="Create account" component={EmailRegisterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
