@@ -5,4 +5,6 @@ export default {
     new: "#CEBAA3",
     facebook: "#4267B2",
     gray: "#F2F4F4",
+    darkgray: "#D5DBDB",
+    lightgray: "#EBEDEF",
 }

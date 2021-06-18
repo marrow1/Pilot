@@ -1,10 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, TextInput, View, Text} from 'react-native';
 import colors from '../utility/colors';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
-
+import { TouchableRipple } from 'react-native-paper';
 
 function EmailRegisterScreen() {
 
@@ -17,7 +17,14 @@ function EmailRegisterScreen() {
     return (
       <View style={styles.container}>
         <StatusBar style="auto" />
-       <Text>Email Register Screen</Text>
+        <View style={styles.formContainer}>
+        <TextInput placeholder="Full name" style={styles.nameInput} maxLength={100} />
+        <TextInput placeholder="Email address" keyboardType="email-address" style={styles.nameInput} maxLength={100} />
+        <TextInput placeholder="Password" secureTextEntry={true} style={styles.nameInput} maxLength={100} />
+        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.registerButton} onPress={() => console.log('Register button clicked!')}>
+          <Text style={styles.buttonText}>Register here</Text>
+        </TouchableRipple>
+        </View>
       </View>
     );
   }
@@ -42,18 +49,47 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       position: 'absolute',
       bottom: 30,
-      width: "90%",
+      width: "100%",
     },
-    continueButton: {
-      color: colors.black,
+    registerButton: {
+      alignItems: "center",
       borderRadius: 5,
-      padding: 8,
-      backgroundColor:colors.white
+      backgroundColor:colors.black,
+      padding:10,
+      width: "100%",
+      marginBottom: 15,
+      padding: 20,
     },
     buttonText: {
-      color: colors.black,
+      color: colors.white,
       fontFamily: "Ubuntu_400Regular",
-      fontWeight: "bold"
+      fontWeight: "normal",
+      fontStyle:"normal",
+    },
+    formContainer:{
+      width: "90%",
+      padding: 5,
+    },
+    nameInput: {
+      backgroundColor: colors.gray,
+      borderRadius: 5,
+      color: colors.black,
+      padding: 10,
+      fontFamily: "Ubuntu_400Regular",
+      fontSize: 18,
+      marginBottom: 8,
+      borderWidth: 2,
+      borderColor: colors.lightgray,
+    },
+    emailInput: {
+      backgroundColor: colors.gray,
+      borderRadius: 5,
+      color: colors.black,
+      padding: 10,
+      fontFamily: "Ubuntu_400Regular",
+      fontSize: 18,
+      borderWidth: 2,
+      borderColor: colors.lightgray,
     }
   });
 
