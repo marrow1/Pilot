@@ -7,7 +7,7 @@ import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts
 import { TouchableRipple } from 'react-native-paper';
 
 
-function EmailRegisterScreen() {
+function EmailLoginScreen() {
 
   let [fontsLoaded] = useFonts({ Ubuntu_400Regular, Ubuntu_500Medium });
 
@@ -19,11 +19,10 @@ function EmailRegisterScreen() {
       <View style={styles.container}>
         <StatusBar style="auto" />
         <View style={styles.formContainer}>
-        <TextInput placeholder="Full name" style={styles.nameInput} maxLength={100} />
         <TextInput placeholder="Email address" keyboardType="email-address" style={styles.nameInput} maxLength={100} />
-        <TextInput placeholder="Password" secureTextEntry={true} style={styles.nameInput} value={password} maxLength={100} />
-        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.registerButton} onPress={() => console.log('Register button clicked!')}>
-          <Text style={styles.buttonText}>Register here</Text>
+        <TextInput placeholder="Password" secureTextEntry={true} style={styles.nameInput} maxLength={100} />
+        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.loginButton} onPress={() => console.log('Login button clicked!')}>
+          <Text style={styles.buttonText}>Login here</Text>
         </TouchableRipple>
         </View>
       </View>
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
       bottom: 30,
       width: "100%",
     },
-    registerButton: {
+    loginButton: {
       alignItems: "center",
       borderRadius: 5,
       backgroundColor:colors.black,
@@ -87,4 +86,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default EmailRegisterScreen;
+export default EmailLoginScreen;

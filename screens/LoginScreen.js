@@ -28,6 +28,10 @@ function LoginScreen({ navigation }) {
           <Text style={styles.buttonText}>Sign up with Email</Text>
         </TouchableRipple>
 
+        <TouchableRipple rippleColor="rgba(255, 255, 255, 1)" style={styles.loginButton} onPress={() => navigation.navigate('Login with email')}>
+          <Text style={styles.googlebuttonText} uppercase={false}>Already on Slate? Login here</Text>
+        </TouchableRipple> 
+
       </View>
     );
   }
@@ -81,6 +85,15 @@ const styles = StyleSheet.create({
       alignItems: "center",
       borderRadius: 5,
       backgroundColor:colors.facebook,
+      padding:10,
+      width: "90%",
+      marginBottom: 15,
+      padding: 20,
+    },
+    loginButton: {
+      alignItems: "center",
+      borderRadius: 5,
+      backgroundColor:colors.white,
       padding:10,
       width: "90%",
       marginBottom: 15,

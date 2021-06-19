@@ -1,6 +1,7 @@
 import React from 'react';
 import AppNavigator from "./navigation/app.navigation";
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
+import auth from '@react-native-firebase/auth';
 
 // Initialize Firebase
 const firebaseConfig = {
