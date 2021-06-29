@@ -5,8 +5,7 @@ import 'react-native-gesture-handler';
 import WelcomeScreen from "../screens/WelcomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import EmailRegisterScreen from '../screens/EmailRegisterScreen';
-import EmailLoginScreen from '../screens/EmailLogin';
-
+import EmailLoginScreen from '../screens/EmailLoginScreen';
 const Stack = createStackNavigator();
 
 function AppNavigator() {

@@ -21,9 +21,6 @@ function LoginScreen({ navigation }) {
         <TouchableRipple rippleColor="rgba(178, 186, 187, .32)" style={styles.continueButtonGoogle} onPress={() => console.log('Google Button')}>
           <Text style={styles.googlebuttonText} uppercase={false}>Sign in with Google</Text>
         </TouchableRipple>
-        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.continueButtonFB} onPress={() => console.log('Facebook Button')}>
-          <Text style={styles.buttonText}>Continue with Facebook</Text>
-        </TouchableRipple>
         <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.continueButton} onPress={() => navigation.navigate('Create account')}>
           <Text style={styles.buttonText}>Sign up with Email</Text>
         </TouchableRipple>

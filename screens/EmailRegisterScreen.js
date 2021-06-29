@@ -1,13 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TextInput, View, Text} from 'react-native';
+import { StyleSheet, TextInput, View, Text, ScrollView, TouchableWithoutFeedback, Linking } from 'react-native';
 import colors from '../utility/colors';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
 import { TouchableRipple } from 'react-native-paper';
+import axios from 'axios';
 
+function EmailRegisterScreen({ navigation }) {
 
-function EmailRegisterScreen() {
+ const [fullname,setFullName] = useState("");
+ const [email,setEmail] = useState("");
+ const [password,setPassword] = useState("");
+
+ const [isSubmit, setIsSubmit] = useState(false); 
+
+ const fullnameHandler = (text) =>{
+   //Input format validation
+   setFullName(text);
+  
+ }
+
+ const emailHandler = (text) =>{
+   //Here i will add more email format vaidation
+   setEmail(text);
+ }
+
+ const passwordHandler = (text) =>{
+   //Here i will add password hash algos..
+   setPassword(text);
+ }
+
+ useEffect(()=>{
+   const authenticate = async()=>{
+    axios.post("http://192.168.1.6/slateweb/registerUser.php", JSON.stringify({
+      fullname: fullname,
+      email: email,
+      password: password,
+    })).then((response)=>{
+      console.log(response.data);
+      setIsSubmit(false);
+      //Navigate user to home after valid register
+      if(response.data == "OK"){
+        navigation.navigate("Welcome");
+      }
+      if(response.data == "Email already exist"){
+        alert("Email is already used")
+      }
+    }).catch((error)=>{
+      console.log(error);
+    });
+   }
+   if(isSubmit) authenticate();
+ }, [isSubmit])
 
   let [fontsLoaded] = useFonts({ Ubuntu_400Regular, Ubuntu_500Medium });
 
@@ -16,16 +61,33 @@ function EmailRegisterScreen() {
   } else {
 
     return (
-      <View style={styles.container}>
+      <View style={{flex: 1}}>
+      <ScrollView contentContainerStyle={styles.container}>
         <StatusBar style="auto" />
         <View style={styles.formContainer}>
-        <TextInput placeholder="Full name" style={styles.nameInput} maxLength={100} />
-        <TextInput placeholder="Email address" keyboardType="email-address" style={styles.nameInput} maxLength={100} />
-        <TextInput placeholder="Password" secureTextEntry={true} style={styles.nameInput} value={password} maxLength={100} />
-        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.registerButton} onPress={() => console.log('Register button clicked!')}>
+        <TextInput placeholder="Full name" keyboardType="default" style={styles.nameInput} 
+        maxLength={100} onChangeText={fullnameHandler} />
+        <TextInput placeholder="Email address" keyboardType="email-address" style={styles.nameInput} maxLength={100} onChangeText={emailHandler} />
+        <TextInput placeholder="Password" secureTextEntry={true} style={styles.nameInput} 
+        maxLength={100} onChangeText={passwordHandler} />
+        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.registerButton} 
+        onPress={ ()=>setIsSubmit(true) }>
           <Text style={styles.buttonText}>Register here</Text>
         </TouchableRipple>
+
+        <Text style={styles.legalText}>
+          By registering you agree to our &nbsp;
+          <TouchableWithoutFeedback onPress={()=> Linking.openURL('https://reactnativecode.com')}>
+            <Text style={styles.trmText}>terms of services &nbsp;</Text>
+          </TouchableWithoutFeedback>
+          and &nbsp;
+          <TouchableWithoutFeedback onPress={()=> Linking.openURL('https://reactnativecode.com')}>
+          <Text style={styles.trmText}>privacy policy.</Text>
+      </TouchableWithoutFeedback>
+        </Text>
+
         </View>
+      </ScrollView>
       </View>
     );
   }
@@ -34,8 +96,7 @@ function EmailRegisterScreen() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems:"center",
       backgroundColor: colors.white,
     },
     buttonContainer: {
@@ -63,6 +124,7 @@ const styles = StyleSheet.create({
     formContainer:{
       width: "90%",
       padding: 5,
+      marginTop: "20%"
     },
     nameInput: {
       backgroundColor: colors.gray,
@@ -84,6 +146,16 @@ const styles = StyleSheet.create({
       fontSize: 18,
       borderWidth: 2,
       borderColor: colors.lightgray,
+    },
+    legalText: {
+      fontFamily: "Ubuntu_400Regular",
+      fontWeight: "normal",
+      color: colors.black,
+      fontSize: 14,
+    },
+    trmText: {
+      color: colors.blue,
+      margin: 10,
     }
   });
 
