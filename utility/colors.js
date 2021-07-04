@@ -8,4 +8,5 @@ export default {
     darkgray: "#D5DBDB",
     lightgray: "#EBEDEF",
     blue: "#3498DB",
+    transparent: "rgba(52, 52, 52, 0.8)",
 }

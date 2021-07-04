@@ -44,8 +44,22 @@ function EmailRegisterScreen({ navigation }) {
       if(response.data == "OK"){
         navigation.navigate("Welcome");
       }
+      if(response.data == "Fullname is blank"){
+        navigation.navigate("Empty FullName Error");
+      }
       if(response.data == "Email already exist"){
-        alert("Email is already used")
+        navigation.navigate("Email Duplicate Error");
+
+      }
+      if(response.data == "Email issue"){
+        navigation.navigate("Email Format Error");
+      }
+   
+      if(response.data == "Password is blank"){
+       navigation.navigate("Empty Password Error");
+      }
+      if(response.data == "Password length"){
+        navigation.navigate("Password Length Error");
       }
     }).catch((error)=>{
       console.log(error);
@@ -61,6 +75,7 @@ function EmailRegisterScreen({ navigation }) {
   } else {
 
     return (
+      
       <View style={{flex: 1}}>
       <ScrollView contentContainerStyle={styles.container}>
         <StatusBar style="auto" />
@@ -156,7 +171,7 @@ const styles = StyleSheet.create({
     trmText: {
       color: colors.blue,
       margin: 10,
-    }
+    },
   });
 
 export default EmailRegisterScreen;
