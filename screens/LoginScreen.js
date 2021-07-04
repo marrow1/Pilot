@@ -18,6 +18,7 @@ function LoginScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <StatusBar style="auto" />
+        <Text style={styles.titleText}>Create your account</Text>
         <TouchableRipple rippleColor="rgba(178, 186, 187, .32)" style={styles.continueButtonGoogle} onPress={() => console.log('Google Button')}>
           <Text style={styles.googlebuttonText} uppercase={false}>Sign in with Google</Text>
         </TouchableRipple>
@@ -96,6 +97,14 @@ const styles = StyleSheet.create({
       marginBottom: 15,
       padding: 20,
     },
+    titleText: {
+      color: colors.black,
+      fontFamily: "Ubuntu_400Regular",
+      fontWeight: "normal",
+      fontStyle:"normal",
+      fontSize: 30,
+      marginBottom:30
+    }
   });
 
 export default LoginScreen;

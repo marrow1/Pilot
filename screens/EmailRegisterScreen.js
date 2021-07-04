@@ -79,6 +79,7 @@ function EmailRegisterScreen({ navigation }) {
       <View style={{flex: 1}}>
       <ScrollView contentContainerStyle={styles.container}>
         <StatusBar style="auto" />
+        <Text style={styles.titleText}>Register here</Text>
         <View style={styles.formContainer}>
         <TextInput placeholder="Full name" keyboardType="default" style={styles.nameInput} 
         maxLength={100} onChangeText={fullnameHandler} />
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     formContainer:{
       width: "90%",
       padding: 5,
-      marginTop: "20%"
+      marginTop: "10%"
     },
     nameInput: {
       backgroundColor: colors.gray,
@@ -172,6 +173,15 @@ const styles = StyleSheet.create({
       color: colors.blue,
       margin: 10,
     },
+    titleText: {
+      color: colors.black,
+      fontFamily: "Ubuntu_400Regular",
+      fontWeight: "normal",
+      fontStyle:"normal",
+      fontSize: 30,
+      marginTop: "20%",
+      marginBottom:0,
+    }
   });
 
 export default EmailRegisterScreen;

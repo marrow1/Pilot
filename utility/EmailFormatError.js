@@ -1,11 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text, ScrollView} from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableWithoutFeedback, Linking} from 'react-native';
 import AppLoading from 'expo-app-loading';
 import colors from '../utility/colors';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
 import { TouchableRipple } from 'react-native-paper';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 function EmailFormatError({ navigation }){
@@ -20,13 +19,25 @@ function EmailFormatError({ navigation }){
     <View style={{flex: 1}}>
     <ScrollView contentContainerStyle={styles.container}>
       <StatusBar style="auto" />
+      <Text style={styles.titleText}>Register here</Text>
       <View style={styles.formContainer}>
-      <MaterialCommunityIcons name="email-minus" size={55} color="black" />
-       <Text style={styles.errMessage}>This email format is incorrect. Try again!</Text>
-      <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" 
-      style={styles.registerButton} onPress={()=>{navigation.goBack();}} >
+      <Text style={styles.warningSymbol}>🚨</Text>
+     <Text style={styles.errMessage}>Email format is incorrect. Try again!</Text>
+      <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.registerButton} 
+      onPress={()=>{navigation.goBack();}}>
         <Text style={styles.buttonText}>Enter correct email</Text>
       </TouchableRipple>
+
+      <Text style={styles.legalText}>
+        By registering you agree to our &nbsp;
+        <TouchableWithoutFeedback onPress={()=> Linking.openURL('https://reactnativecode.com')}>
+          <Text style={styles.trmText}>terms of services &nbsp;</Text>
+        </TouchableWithoutFeedback>
+        and &nbsp;
+        <TouchableWithoutFeedback onPress={()=> Linking.openURL('https://reactnativecode.com')}>
+        <Text style={styles.trmText}>privacy policy.</Text>
+    </TouchableWithoutFeedback>
+      </Text>
 
       </View>
     </ScrollView>
@@ -53,14 +64,14 @@ const styles = StyleSheet.create({
   registerButton: {
     alignItems: "center",
     borderRadius: 5,
-    backgroundColor:colors.black,
+    backgroundColor:colors.white,
     padding:10,
     width: "100%",
     marginBottom: 15,
     padding: 20,
   },
   buttonText: {
-    color: colors.white,
+    color: colors.black,
     fontFamily: "Ubuntu_400Regular",
     fontWeight: "normal",
     fontStyle:"normal",
@@ -68,21 +79,46 @@ const styles = StyleSheet.create({
   formContainer:{
     width: "90%",
     padding: 5,
-    marginTop: "65%",
+    marginTop: "10%",
     alignItems: "center",
   },
-  errMessage: {
-    textAlign: "center",
+  legalText: {
+    fontFamily: "Ubuntu_400Regular",
+    fontWeight: "normal",
+    color: colors.black,
+    fontSize: 14,
+  },
+  trmText: {
+    color: colors.blue,
+    margin: 10,
+  },
+  titleText: {
     color: colors.black,
     fontFamily: "Ubuntu_400Regular",
     fontWeight: "normal",
     fontStyle:"normal",
-    fontSize: 17,
-    marginTop: 20,
-    marginBottom: 30
+    fontSize: 30,
+    marginTop: "20%",
+    marginBottom:0,
+  },
+  warningSymbol: {
+    fontSize: 40,
+  },
+  errMessage: {
+    color: colors.black,
+    fontFamily: "Ubuntu_400Regular",
+    fontWeight: "normal",
+    fontStyle:"normal",
+    fontSize: 16,
+    marginTop: 10,
+    marginBottom:10,
+    padding: 18,
+    borderRadius: 4,
+    backgroundColor: colors.redbackground,
+    color: colors.red,
+    width: "100%"
   }
  
 });
-
 
 export default EmailFormatError;

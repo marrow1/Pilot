@@ -21,28 +21,27 @@ function AppNavigator() {
     <NavigationContainer >
       <Stack.Navigator screenOptions={{ gestureEnabled: false, cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,}}>
         <Stack.Screen options={{headerShown: false}} name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen  name="Login to continue" component={LoginScreen} />
-        <Stack.Screen  name="Create account" component={EmailRegisterScreen} />
-        <Stack.Screen  name="Login with email" component={EmailLoginScreen} />
+        <Stack.Screen options={{headerShown: false}}  name="Login to continue" component={LoginScreen} />
+        <Stack.Screen options={{headerShown: false}}  name="Create account" component={EmailRegisterScreen} />
+        <Stack.Screen options={{headerShown: false}}  name="Login with email" component={EmailLoginScreen} />
 
         <Stack.Screen  name="Empty Email Error" component={EmptyEmailError} 
         options={{
         headerShown: false,   
         animationEnabled: true, 
-        cardStyle: {backgroundColor: "rgba(0,0,0,0.15)"},
         cardOverlayEnabled: true,  
         cardStyleInterpolator: ({ current: { progress }}) =>{
           return{
             cardStyle: {
               opacity: progress.interpolate({
-                inputRange: [0, 0.5, 0.9, 1],
-                outputRange:[0, 0.25, 0.7, 1]
+                inputRange: [0, 1, 1, 1],
+                outputRange:[1, 1, 1, 0]
               })
             },
             overlayStyle: {
               opacity: progress.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, 0.5],
+                outputRange: [1, 0],
                 extrapolate: "clamp"
               })
             }
@@ -58,20 +57,19 @@ function AppNavigator() {
         options={{
         headerShown: false,   
         animationEnabled: true, 
-        cardStyle: {backgroundColor: "rgba(0,0,0,0.15)"},
         cardOverlayEnabled: true,  
         cardStyleInterpolator: ({ current: { progress }}) =>{
           return{
             cardStyle: {
               opacity: progress.interpolate({
-                inputRange: [0, 0.5, 0.9, 1],
-                outputRange:[0, 0.25, 0.7, 1]
+                inputRange: [0, 1, 1, 1],
+                outputRange:[1, 1, 1, 0]
               })
             },
             overlayStyle: {
               opacity: progress.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, 0.5],
+                outputRange: [1, 0],
                 extrapolate: "clamp"
               })
             }
@@ -86,20 +84,19 @@ function AppNavigator() {
         options={{
         headerShown: false,   
         animationEnabled: true, 
-        cardStyle: {backgroundColor: "rgba(0,0,0,0.15)"},
         cardOverlayEnabled: true,  
         cardStyleInterpolator: ({ current: { progress }}) =>{
           return{
             cardStyle: {
               opacity: progress.interpolate({
-                inputRange: [0, 0.5, 0.9, 1],
-                outputRange:[0, 0.25, 0.7, 1]
+                inputRange: [0, 1, 1, 1],
+                outputRange:[1, 1, 1, 0]
               })
             },
             overlayStyle: {
               opacity: progress.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, 0.5],
+                outputRange: [1, 0],
                 extrapolate: "clamp"
               })
             }
@@ -114,20 +111,19 @@ function AppNavigator() {
         options={{
         headerShown: false,   
         animationEnabled: true, 
-        cardStyle: {backgroundColor: "rgba(0,0,0,0.15)"},
         cardOverlayEnabled: true,  
         cardStyleInterpolator: ({ current: { progress }}) =>{
           return{
             cardStyle: {
               opacity: progress.interpolate({
-                inputRange: [0, 0.5, 0.9, 1],
-                outputRange:[0, 0.25, 0.7, 1]
+                inputRange: [0, 1, 1, 1],
+                outputRange:[1, 1, 1, 0]
               })
             },
             overlayStyle: {
               opacity: progress.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, 0.5],
+                outputRange: [1, 0],
                 extrapolate: "clamp"
               })
             }
@@ -142,20 +138,19 @@ function AppNavigator() {
         options={{
         headerShown: false,   
         animationEnabled: true, 
-        cardStyle: {backgroundColor: "rgba(0,0,0,0.15)"},
         cardOverlayEnabled: true,  
         cardStyleInterpolator: ({ current: { progress }}) =>{
           return{
             cardStyle: {
               opacity: progress.interpolate({
-                inputRange: [0, 0.5, 0.9, 1],
-                outputRange:[0, 0.25, 0.7, 1]
+                inputRange: [0, 1, 1, 1],
+                outputRange:[1, 1, 1, 0]
               })
             },
             overlayStyle: {
               opacity: progress.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, 0.5],
+                outputRange: [1, 0],
                 extrapolate: "clamp"
               })
             }
@@ -170,20 +165,19 @@ function AppNavigator() {
         options={{
         headerShown: false,   
         animationEnabled: true, 
-        cardStyle: {backgroundColor: "rgba(0,0,0,0.15)"},
         cardOverlayEnabled: true,  
         cardStyleInterpolator: ({ current: { progress }}) =>{
           return{
             cardStyle: {
               opacity: progress.interpolate({
-                inputRange: [0, 0.5, 0.9, 1],
-                outputRange:[0, 0.25, 0.7, 1]
+                inputRange: [0, 1, 1, 1],
+                outputRange:[1, 1, 1, 0]
               })
             },
             overlayStyle: {
               opacity: progress.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, 0.5],
+                outputRange: [1, 0],
                 extrapolate: "clamp"
               })
             }

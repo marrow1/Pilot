@@ -20,6 +20,7 @@ function EmailLoginScreen() {
       <View style={{flex: 1}}>
       <ScrollView contentContainerStyle={styles.container}>
         <StatusBar style="auto" />
+        <Text style={styles.titleText}>Login with email</Text>
         <View style={styles.formContainer}>
         <TextInput placeholder="Email address" keyboardType="default" style={styles.nameInput} maxLength={100} />
         <TextInput placeholder="Password" keyboardType="default" secureTextEntry={true} style={styles.nameInput} maxLength={100} />
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   formContainer:{
     width: "90%",
     padding: 5,
-    marginTop: "40%"
+    marginTop: "15%"
   },
   nameInput: {
     backgroundColor: colors.gray,
@@ -87,6 +88,15 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.lightgray,
   },
+  titleText: {
+    color: colors.black,
+    fontFamily: "Ubuntu_400Regular",
+    fontWeight: "normal",
+    fontStyle:"normal",
+    fontSize: 30,
+    marginTop: "35%",
+    marginBottom:0,
+  }
   });
 
 export default EmailLoginScreen;
