@@ -6,7 +6,7 @@ import AppLoading from 'expo-app-loading';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
 import { TouchableRipple } from 'react-native-paper';
 
-function HomeScreen(){
+function Template(){
 
     let [fontsLoaded] = useFonts({ Ubuntu_400Regular, Ubuntu_500Medium });
 
@@ -18,12 +18,12 @@ function HomeScreen(){
         <View style={{flex: 1}}>
         <ScrollView contentContainerStyle={styles.container}>
           <StatusBar style="auto" />
-          <Text style={styles.titleText}>Home Screen</Text>
+          <Text style={styles.titleText}>This is template</Text>
         </ScrollView>
         </View>
       );
     }
-
+    
 }
 
 const styles = StyleSheet.create({
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
     }
     });
 
-export default HomeScreen;
+export default Template;

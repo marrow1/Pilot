@@ -6,6 +6,9 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import EmailRegisterScreen from '../screens/EmailRegisterScreen';
 import EmailLoginScreen from '../screens/EmailLoginScreen';
+import HomeScreen from "../screens/HomeScreen";
+
+/* Error Screen imports */
 import EmptyEmailError from '../utility/EmptyEmailError';
 import EmailDuplicateError from '../utility/EmailDuplicateError';
 import EmailFormatError from '../utility/EmailFormatError';
@@ -24,7 +27,7 @@ function AppNavigator() {
         <Stack.Screen options={{headerShown: false}}  name="Login to continue" component={LoginScreen} />
         <Stack.Screen options={{headerShown: false}}  name="Create account" component={EmailRegisterScreen} />
         <Stack.Screen options={{headerShown: false}}  name="Login with email" component={EmailLoginScreen} />
-
+        <Stack.Screen options={{headerShown: false}}  name="Home" component={HomeScreen} />
         <Stack.Screen  name="Empty Email Error" component={EmptyEmailError} 
         options={{
         headerShown: false,   
