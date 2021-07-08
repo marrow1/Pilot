@@ -20,6 +20,7 @@ function EmptyEmailError({ navigation }){
     <View style={{flex: 1}}>
     <ScrollView contentContainerStyle={styles.container}>
       <StatusBar style="auto" />
+      <Text style={styles.titleText}>We have a problem!</Text>
       <View style={styles.formContainer}>
       <MaterialCommunityIcons name="email-minus" size={55} color="black" />
        <Text style={styles.errMessage}>Email can't be blank. Try again!</Text>

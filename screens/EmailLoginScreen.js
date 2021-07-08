@@ -5,10 +5,62 @@ import colors from '../utility/colors';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
 import { TouchableRipple } from 'react-native-paper';
+import axios from 'axios';
 
+function EmailLoginScreen({ navigation }) {
 
-function EmailLoginScreen() {
+ const [email,setEmail] = useState("");
+ const [password,setPassword] = useState("");
 
+ const [isSubmit, setIsSubmit] = useState(false); 
+
+ const emailHandler = (text) =>{
+  //Here i will add more email format vaidation
+  setEmail(text);
+ }
+
+  const passwordHandler = (text) =>{
+  //Here i will add password hash algos..
+  setPassword(text);
+  }
+
+  useEffect(()=>{
+    const authenticate = async()=>{
+     axios.post("http://192.168.1.6/slateweb/loginUser.php", JSON.stringify({
+       email: email,
+       password: password,
+     })).then((response)=>{
+       console.log(response.data);
+       setIsSubmit(false);
+       //Navigate user to home after valid register
+       if(response.data == "Email exists"){
+         navigation.navigate("Home", { email });
+       }
+
+       if(response.data == "Login error"){
+        navigation.navigate("Login Credentials Error");
+      }
+
+       if(response.data == "Email error"){
+        navigation.navigate("Invalid email or password");
+      }
+    
+       if(response.data == "Email issue"){
+         navigation.navigate("Email Format Error");
+       }
+    
+       if(response.data == "Password is blank"){
+        navigation.navigate("Empty Password Error");
+       }
+       if(response.data == "Password length"){
+         navigation.navigate("Password Length Error");
+       }
+     }).catch((error)=>{
+       console.log(error);
+     });
+    }
+    if(isSubmit) authenticate();
+  }, [isSubmit])
 
   let [fontsLoaded] = useFonts({ Ubuntu_400Regular, Ubuntu_500Medium });
 
@@ -22,9 +74,9 @@ function EmailLoginScreen() {
         <StatusBar style="auto" />
         <Text style={styles.titleText}>Login with email</Text>
         <View style={styles.formContainer}>
-        <TextInput placeholder="Email address" keyboardType="default" style={styles.nameInput} maxLength={100} />
-        <TextInput placeholder="Password" keyboardType="default" secureTextEntry={true} style={styles.nameInput} maxLength={100} />
-        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.loginButton} onPress={() => console.log('Login button clicked!')}>
+        <TextInput placeholder="Email address" keyboardType="default" style={styles.nameInput} maxLength={100} onChangeText={emailHandler} />
+        <TextInput placeholder="Password" keyboardType="default" secureTextEntry={true} style={styles.nameInput} maxLength={100}onChangeText={passwordHandler} />
+        <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.loginButton} onPress={ ()=>setIsSubmit(true) }>
           <Text style={styles.buttonText}>Login here</Text>
         </TouchableRipple>
         </View>

@@ -20,7 +20,7 @@ function EmailDuplicateError({ navigation }){
     <View style={{flex: 1}}>
     <ScrollView contentContainerStyle={styles.container}>
       <StatusBar style="auto" />
-      <Text style={styles.titleText}>Register here</Text>
+      <Text style={styles.titleText}>We have a problem!</Text>
       <View style={styles.formContainer}>
       <Text style={styles.warningSymbol}>🚨</Text>
      <Text style={styles.errMessage}>This email is already registered. Try again!</Text>

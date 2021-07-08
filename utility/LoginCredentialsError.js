@@ -5,10 +5,9 @@ import AppLoading from 'expo-app-loading';
 import colors from '../utility/colors';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
 import { TouchableRipple } from 'react-native-paper';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 
-function PasswordLengthError({ navigation }){
+function LoginCredentialsError({ navigation }){
 
   let [fontsLoaded] = useFonts({ Ubuntu_400Regular, Ubuntu_500Medium });
 
@@ -23,10 +22,10 @@ function PasswordLengthError({ navigation }){
       <Text style={styles.titleText}>We have a problem!</Text>
       <View style={styles.formContainer}>
       <Text style={styles.warningSymbol}>🚨</Text>
-     <Text style={styles.errMessage}>Password should be atleast 6 letters long. Try again!</Text>
+     <Text style={styles.errMessage}>Invalid email or password. Try again!</Text>
       <TouchableRipple rippleColor="rgba(244, 246, 246, .32)" style={styles.registerButton} 
       onPress={()=>{navigation.goBack();}}>
-        <Text style={styles.buttonText}>Enter password again</Text>
+        <Text style={styles.buttonText}>Enter correct details</Text>
       </TouchableRipple>
 
       <Text style={styles.legalText}>
@@ -124,4 +123,4 @@ const styles = StyleSheet.create({
 
 
 
-export default PasswordLengthError;
+export default LoginCredentialsError;

@@ -42,7 +42,7 @@ function EmailRegisterScreen({ navigation }) {
       setIsSubmit(false);
       //Navigate user to home after valid register
       if(response.data == "OK"){
-        navigation.navigate("Home");
+        navigation.navigate("Home", { email });
       }
       if(response.data == "Fullname is blank"){
         navigation.navigate("Empty FullName Error");

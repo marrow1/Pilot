@@ -20,6 +20,7 @@ function FullNameFormatError({ navigation }){
     <View style={{flex: 1}}>
     <ScrollView contentContainerStyle={styles.container}>
       <StatusBar style="auto" />
+      <Text style={styles.titleText}>We have a problem!</Text>
       <View style={styles.formContainer}>
       <MaterialIcons name="perm-identity" size={55} color="black" />
        <Text style={styles.errMessage}>Your name can only contain letters. Try again!</Text>

@@ -15,6 +15,7 @@ import EmailFormatError from '../utility/EmailFormatError';
 import EmptyFullNameError from '../utility/EmptyFullNameError';
 import EmptyPasswordError from '../utility/EmptyPasswordError';
 import PasswordLengthError from '../utility/PasswordLengthError';
+import LoginCredentialsError from '../utility/LoginCredentialsError';
 
 const Stack = createStackNavigator();
 
@@ -165,6 +166,33 @@ function AppNavigator() {
         />
 
 <Stack.Screen  name="Password Length Error" component={PasswordLengthError} 
+        options={{
+        headerShown: false,   
+        animationEnabled: true, 
+        cardOverlayEnabled: true,  
+        cardStyleInterpolator: ({ current: { progress }}) =>{
+          return{
+            cardStyle: {
+              opacity: progress.interpolate({
+                inputRange: [0, 1, 1, 1],
+                outputRange:[1, 1, 1, 0]
+              })
+            },
+            overlayStyle: {
+              opacity: progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: [1, 0],
+                extrapolate: "clamp"
+              })
+            }
+          };
+        }
+
+      }
+    }
+        />
+
+<Stack.Screen  name="Login Credentials Error" component={LoginCredentialsError} 
         options={{
         headerShown: false,   
         animationEnabled: true, 
