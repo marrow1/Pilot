@@ -1,14 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TextInput, View, Text, ScrollView} from 'react-native';
+import { StyleSheet, View, Text, ScrollView} from 'react-native';
 import colors from '../utility/colors';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
 import { TouchableRipple } from 'react-native-paper';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import axios from 'axios';
+
+const Tab = createBottomTabNavigator();
 
 function HomeScreen({ route, navigation }){
 
-  const { email } = route.params; 
+  const email = route.params;
+  //const emailvalue = JSON.stringify(email);
+  const emailobj = route.params.email;
+
+  useEffect(()=>{
+    const getUserData = async()=>{
+     axios.get(`http://192.168.1.6/slateweb/userHomeScreenData.php?email=${emailobj}`).then((response)=>{
+       console.log(response.data);
+     }).catch((error)=>{
+       console.log(error);
+     });
+    }
+    getUserData();
+  });
 
     let [fontsLoaded] = useFonts({ Ubuntu_400Regular, Ubuntu_500Medium });
 
@@ -20,8 +37,13 @@ function HomeScreen({ route, navigation }){
         <View style={{flex: 1}}>
         <ScrollView contentContainerStyle={styles.container}>
           <StatusBar style="auto" />
-          <Text style={styles.titleText}>Hi, {JSON.stringify(email)}</Text>
+          <Text style={styles.titleText}>Hi, {emailobj}</Text>
         </ScrollView>
+       
+        {/* <Tab.Navigator>
+         <Tab.Screen name="Home" component={HomeScreen} />
+        </Tab.Navigator> */}
+
         </View>
       );
     }
