@@ -27,7 +27,7 @@ function LoginScreen({ navigation }) {
         </TouchableRipple>
 
         <TouchableRipple rippleColor="rgba(255, 255, 255, 1)" style={styles.loginButton} onPress={() => navigation.navigate('Login with email')}>
-          <Text style={styles.googlebuttonText} uppercase={false}>Already on Slate? Login here</Text>
+          <Text style={styles.googlebuttonText} uppercase={false}>Already on Pilot? Login here</Text>
         </TouchableRipple> 
 
       </View>

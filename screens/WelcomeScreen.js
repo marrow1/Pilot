@@ -19,7 +19,7 @@ function WelcomeScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <Text style={styles.mainLogo}>S\ATE</Text>
+        <Text style={styles.mainLogo}>Pilot</Text>
         <View style={styles.buttonContainer}>
         <Button mode="contained" style={styles.continueButton} onPress={() => navigation.navigate('Login to continue')}>
           <Text style={styles.buttonText}>Continue</Text>

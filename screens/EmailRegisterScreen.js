@@ -33,7 +33,7 @@ function EmailRegisterScreen({ navigation }) {
 
  useEffect(()=>{
    const authenticate = async()=>{
-    axios.post("http://192.168.1.6/slateweb/registerUser.php", JSON.stringify({
+    axios.post("http://192.168.1.6/webapi/registerUser.php", JSON.stringify({
       fullname: fullname,
       email: email,
       password: password,

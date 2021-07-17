@@ -26,7 +26,7 @@ function EmailLoginScreen({ navigation }) {
 
   useEffect(()=>{
     const authenticate = async()=>{
-     axios.post("http://192.168.1.6/slateweb/loginUser.php", JSON.stringify({
+     axios.post("http://192.168.1.6/webapi/loginUser.php", JSON.stringify({
        email: email,
        password: password,
      })).then((response)=>{

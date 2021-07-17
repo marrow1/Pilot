@@ -5,8 +5,6 @@ import AppLoading from 'expo-app-loading';
 import colors from '../utility/colors';
 import { useFonts, Ubuntu_400Regular, Ubuntu_500Medium} from '@expo-google-fonts/ubuntu';
 import { TouchableRipple } from 'react-native-paper';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-
 
 function EmailDuplicateError({ navigation }){
 
